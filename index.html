@@ -1,53 +1,98 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<head>
-    <title>My Calories & Me</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="">
-</head>
+    <head>
+        <title>My Calories & Me</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="">
+        <!-- Compressed CSS Foundation -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
 
-<body>
-    <header>
-        <h1>
-                Food Description
-        </h1>
-    </header>
-    <section>
-        <mainbox>
-            <ui>
-                <li>
-                    Calories:
-                </li>
-                <li>
-                    Protein:
-                </li>
-                <li>
-                    Fat:
-                </li>
-                <li>
-                    Carbs:
-                </li>
-            </ui>
-        </mainbox>
-        <asidebox>
-            <ui>
-                <li>
-                    Sugar:
-                </li>
-                <li>
-                    Sodium:
-                </li>
-            </ui>
-        </asidebox>
-        
-    </section>
-    <aside>
-        <searchbox>
-            <input type="text" id="foodsearch" placeholder="Search for Category of Food">
-        </searchbox>
-        <searchresults>
-            <output>Results</output>
-        </searchresults>
-    </aside>
-</body>
+        <!-- JQuery CDN Link -->
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="assets/style.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>
+                    Food Description
+            </h1>
+        </header>
+        <section>
+
+            <mainbox>
+                <ul>
+                    <li id="calorie">
+                        Calories:
+                    </li>
+                    <li id="protein">
+                        Protein:
+                    </li>
+                    <li id="fat">
+                        Fat:
+                    </li>
+                    <li id="carb">
+                        Carbs:
+                    </li>
+                    <li id="sugar">
+                        Sugar:
+                    </li>
+                </ul>
+            </mainbox>
+            
+        </section>
+        <aside>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <div class="card" data-fruit="apple"> <!--example card-->
+                <div class="card-section">Apple</div>
+            </div>
+            <!--this is where all of the buttons for the fruits will go-->
+            <!-- <button data-fruit="fruit_name">fruit_name</button>  EXAMPLE BUTTON || maybe make the whole div a button-->
+        </aside>
+
+        <section> <!--THis will hold data for the fruits-->
+
+
+        </section>
+
+        <script src="assets/script.js"></script>
+    </body>
+
+</html>
