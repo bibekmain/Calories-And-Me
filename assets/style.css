@@ -1,0 +1,20 @@
+aside{
+    display: flex;
+    flex-flow: row wrap;
+    width: 20%;
+}
+.card{
+    width: 45%;
+    height: 50px;
+    border: solid 2px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+    margin: 2px;
+}
+.card:hover{
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
