@@ -45,7 +45,7 @@
           })
         }
         else {
-          changeInput(form[0], 'placeholder', 'We didn\'t found any food.')
+          changeInput(form[0], 'placeholder', 'We didn\'t find any food.')
           resetInput(form[0])
         }
         changeTextButton(form[1], 'SEARCH')
@@ -68,8 +68,8 @@
     result.insertAdjacentHTML('beforeend', buildCard(food))
   }
   function buildCard(data) {
-    const energy = data.nutrients.ENERC_KCAL ? `<li><b>Energy: </b><span>${data.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>` : ''
-    const carbs = data.nutrients.CHOCDF ? `<li><b>Carbs: </b><span>${data.nutrients.CHOCDF.toFixed(1)}g</span></li>` : ''
+    const energy = data.nutrients.ENERC_KCAL ? `<li><b>Calories: </b><span>${data.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>` : ''
+    const carbs = data.nutrients.CHOCDF ? `<li><b>Carbohydrates: </b><span>${data.nutrients.CHOCDF.toFixed(1)}g</span></li>` : ''
     const protein = data.nutrients.PROCNT ? `<li><b>Protein: </b><span>${data.nutrients.PROCNT.toFixed(1)}g</span></li>` : ''
     const fat = data.nutrients.FAT ? `<li><b>Fat: </b><span>${data.nutrients.FAT.toFixed(1)}g</span></li>` : ''
     const sugars = data.nutrients.SUGAR ? `<li><b>Sugars: </b><span>${data.nutrients.SUGAR.toFixed(1)}g</span></li>` : ''
