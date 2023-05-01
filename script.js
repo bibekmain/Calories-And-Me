@@ -1,3 +1,4 @@
+
 //This section is edamam API JS
 (function () {
   const result = document.querySelector('#result')
@@ -84,7 +85,7 @@
     return html
   }
 
-  initEvent()(function () {
+  initEvent(function () {
   const result = document.querySelector('#result')
   function initEvent() {
     document.querySelector('#search').addEventListener('submit', function (e) {
@@ -116,13 +117,15 @@
         }
         changeTextButton(form[1], 'SEARCH')
         changeInput(form[0], 'value', '')
-      }).catch(() => {//if the response has an error
+      }).catch(() => {
+        //if the response has an error
         changeTextButton(form[1], 'SEARCH')
         changeInput(form[0], 'placeholder', 'An error has occurred. Try again later.')
         resetInput(form[0])
       })
   }
-  function resetInput(input) { //changes input back to it's placeholder
+  //changes input back to it's placeholder
+  function resetInput(input) { 
     setTimeout(() => {
       changeInput(input, 'placeholder', 'Type a food or a meal...')
     }, 3000)
@@ -135,7 +138,8 @@
   function insertCard(food) {
     result.insertAdjacentHTML('beforeend', buildCard(food))
   }
-  function buildCard(data) { //builds the card after search for each product
+  //builds the card after search for each product
+  function buildCard(data) { 
     const energy = data.nutrients.ENERC_KCAL ? `<li><b>Energy: </b><span>${data.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>` : ''
     const carbs = data.nutrients.CHOCDF ? `<li><b>Carbs: </b><span>${data.nutrients.CHOCDF.toFixed(1)}g</span></li>` : ''
     const protein = data.nutrients.PROCNT ? `<li><b>Protein: </b><span>${data.nutrients.PROCNT.toFixed(1)}g</span></li>` : ''
@@ -183,7 +187,7 @@ function getImage(form){
     .then(resp => {//do something with json recieved from pixabay
       imageURL = resp.hits[0].webformatURL;
     }).catch(() => {//if the response has an error
-      
+     
     })
   //console.log("https://pixabay.com/api/?key=35844814-7d1b1acb06ab5ddd767b0ed30&q=" + searchTerm + "&image_type=photo&min_width=200&max_width=200&safesearch=true&per_page=3");
 }
