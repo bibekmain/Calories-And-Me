@@ -3,7 +3,8 @@
   }
 body {
   margin: 0;
-  background-image: url('/assets/background.jpg');
+  /*background image*/
+  background-image: url('./assets/background.jpg');
   color: black;
   font-size: larger;
   background-repeat: no-repeat;
@@ -14,44 +15,46 @@ body {
   grid-template-rows: minmax(0px, calc(50vh - 75px)) minmax(calc(50vh - 75px), 1fr) 50px;
   grid-gap: 50px;
 }
-button{
-  border: 2px solid;
-  border-radius: 10px;
-  background-color: white;
-  color: black;
-  padding: 2px;
-}
-button:hover{
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-input {
+/*search button styling-foundation framework*/
+.input {
   block-size: 30px;
   inline-size: 500px;
 }
+/*  rounded buttons on both corners-foundation framework */
+.input-group-rounded .input-group-field {
+border-radius: 5000px 0 0 5000px;
+padding-left: 1rem;
+}
 
-h1, h2{
+.input-group-rounded .input-group-button .button {
+border-radius: 0 5000px 5000px 0;
+font-size: 0.8rem;
+}
+/*header styling*/
+h1,h2 {
   justify-content: center;
-  color: azure;
+ color: white;
 }
 header, section {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  padding: 5px;
-  margin: 10px;
+  align-items: center;
 }
 header {
   justify-content: flex-end;
 }
+/*placeholder image styling*/
 img{
   width: 300px;
   height: auto;
   border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
+/*results card*/
+
 .card{
   padding: 10px;
   margin: 8px;
@@ -59,4 +62,5 @@ img{
   border-color: black;
   color: azure;
   background-color: rgba(98,93,96,0.5);
-}
+  }
+
