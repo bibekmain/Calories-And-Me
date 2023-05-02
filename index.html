@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="style.css">
   
   </head>
+  
   <body>
     <!--header section for displaying title and searchbox -->
     <header>
@@ -28,20 +29,22 @@
       <!--rounded search button using foundation framework-->
       <form id="search">
         <div class="input-group input-group-rounded" >
-        <input name="name" class="input-group-field" type="search"  placeholder="Type a food or a meal..."> 
-      <div class="input-group-button">
-          <input type="submit" class="button secondary" value="Search">
-      </div>
-      </div>
+          <input name="name" class="input-group-field" type="search"  placeholder="Type a food or a meal..."> 
+          <div class="input-group-button">
+              <input type="submit" class="button secondary" value="Search">
+          </div>
+        </div>
       </form>
     </header>
     <!--search results section-->
     <section>
+      <!--image for the searched product-->
+      <img src="assets/placeholder.jpg"  alt="placeholder" id="food-image">
+
       <div id="result" class="cell-block-y">
-     <!--image for the searched product-->
-      <img src="assets/placeholder.jpg"  alt="placeholder">
-    </div>
-      </section>
+        <!--Where the cards will go-->
+      </div>
+    </section>
    
     <!--edamam API link-->
     <script src="https://developer.edamam.com/attribution/badge.js"></script> 
