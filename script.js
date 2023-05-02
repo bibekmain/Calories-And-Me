@@ -57,10 +57,10 @@ var imgEl = document.getElementById("food-image");
   }
   //builds the card after search for each product
   function buildCard(data) {
-    const energy = data.nutrients.ENERC_KCAL ? `<li><b>Energy: </b><span>${data.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>` : ''
-    const carbs = data.nutrients.CHOCDF ? `<li><b>Carbs: </b><span>${data.nutrients.CHOCDF.toFixed(1)}g</span></li>` : ''
-    const protein = data.nutrients.PROCNT ? `<li><b>Protein: </b><span>${data.nutrients.PROCNT.toFixed(1)}g</span></li>` : ''
-    const fat = data.nutrients.FAT ? `<li><b>Fat: </b><span>${data.nutrients.FAT.toFixed(1)}g</span></li>` : ''
+    const energy = data.nutrients.ENERC_KCAL ? `<li><b>Calories: </b><span>${data.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>` : ''
+    const carbs = data.nutrients.CHOCDF ? `<li><b>Carbohydrates: </b><span>${data.nutrients.CHOCDF.toFixed(1)}g</span></li>` : ''
+    const protein = data.nutrients.PROCNT ? `<li><b>Proteins: </b><span>${data.nutrients.PROCNT.toFixed(1)}g</span></li>` : ''
+    const fat = data.nutrients.FAT ? `<li><b>Fats: </b><span>${data.nutrients.FAT.toFixed(1)}g</span></li>` : ''
     const sugars = data.nutrients.SUGAR ? `<li><b>Sugars: </b><span>${data.nutrients.SUGAR.toFixed(1)}g</span></li>` : ''
     const html = `
   <div class="card">
@@ -102,6 +102,7 @@ function getImage(form){
     .then(resp => {//do something with json recieved from pixabay
       imageURL = resp.hits[0].webformatURL; //selects the first image returned through API
       imgEl.setAttribute("src", imageURL); //sets the src attribute of image in html
+      imgEl.style.visibility = "visible";
     }).catch(() => {//if the response has an error, set placeholder as image src
       imgEl.setAttribute("src", "assets/placeholder.jpg");
     })
