@@ -37,7 +37,7 @@ body {
 /*header styling*/
 h1 {
   /* font-weight: bolder;*/
-  text-shadow: 0px 0px 5px #c9d393, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+  text-shadow: 0px 0px 5px #c9d393, 0px 0px 10px #c9d393, 0px 0px 10px #c9d393,
     0px 0px 20px #c3d393;
 
 }
@@ -85,5 +85,19 @@ img {
   border-color: black;
   color: azure;
   background-color: rgba(98, 93, 96, 0.5);
-  overflow-y: scroll;
+
+}
+.card:hover{
+ /*transform: scale(1.05);*/
+  border-color: #93d3af;
+}
+.card:active
+{
+  border-color: yellow;
+}
+.addBtn{
+background-color:grey;
+bottom: 5px;
+    right: 5px;
+    border-radius: 5px;
 }

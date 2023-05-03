@@ -57,6 +57,7 @@ var imgEl = document.getElementById("food-image");
   }
   //builds the card after search for each product
   function buildCard(data) {
+    
     const energy = data.nutrients.ENERC_KCAL ? `<li><b>Calories: </b><span>${data.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>` : ''
     const carbs = data.nutrients.CHOCDF ? `<li><b>Carbohydrates: </b><span>${data.nutrients.CHOCDF.toFixed(1)}g</span></li>` : ''
     const protein = data.nutrients.PROCNT ? `<li><b>Proteins: </b><span>${data.nutrients.PROCNT.toFixed(1)}g</span></li>` : ''
@@ -79,6 +80,10 @@ var imgEl = document.getElementById("food-image");
     </div>
     <div class="card-footer">
       <p><b>Brand: </b><span>${data.brand || 'None :('}</span></p>
+      <div class="addBtn">
+      <button style="color:azure"> ADD </button>
+     
+      </div>
     </div>
   </div>
   `
