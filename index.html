@@ -42,7 +42,47 @@
   <section>
     <!--image for the searched product-->
     <img src="assets/placeholder.jpg" alt="placeholder" id="food-image">
-    <div id="diary" class ="diary"></div> 
+    <div id="diary" class ="diary">
+
+      <div class="diary">
+
+        <h1>Saved</h1>
+
+        <div class="diary-header">
+          <h3>Food Label</h3>
+          <h4>Food Category</h4>
+        </div>
+
+        <div class="diary-body">
+          <ul>
+            <li><b>Calories: </b><span>--</span></li>
+            <li><b>Carbohydrates: </b><span>--</span></li>
+            <li><b>Proteins: </b><span>--</span></li>
+            <li><b>Fats: </b><span>--</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="log-container">
+
+        <h1>Daily Log</h1>
+            
+        <div id="totals-header"> <strong>My Daily Log: </strong> </div>
+        <div id="totals">
+
+          <h6>Calories: <span id="totalCalories"></span></h6>
+          <h6>Carbohydrates: <span id="totalCarbohydrates"></span></h6>
+          <h6>Proteins: <span id="totalProteins"></span></h6>
+          <h6>Fats: <span id="totalFats"></span></h6>
+
+          <button id="reset-button" onclick="resetMacros();">Reset</button>
+
+        </div>
+
+      </div> 
+
+    </div> 
     <div id="result" class="cell-block-y">  
     </div>
   

@@ -77,7 +77,6 @@ margin-bottom: 10px;
 }
 
 /*results card*/
-
 .card {
   padding: 10px;
   margin: 8px;
@@ -106,4 +105,32 @@ margin-bottom: 10px;
 .addBtn .heart:focus{
   color: red;
 }
+
+#diary{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  border: 2px solid;
+  border-radius: 15px;
+  padding: 5px;
+}
+.log-container{
+  margin-left: 15px;
+  border: 2px dotted;
+  border-radius: 20px;
+  padding: 3px;
+}
+#reset-button{
+  color: white;
+  border: 3px solid;
+  border-radius: 20px;
+  width: 30%;
+}
+#reset-button:hover{
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
 
