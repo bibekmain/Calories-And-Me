@@ -24,6 +24,7 @@ var imgEl = document.getElementById("food-image");
       .then(resp => resp.json())
       .then(resp => {
         if (resp.hints.length) {
+          localStorage.setItem("items",JSON.stringify(resp.hints))
           resp.hints.forEach(hint => {
             insertCard(hint.food)
           })
@@ -57,7 +58,6 @@ var imgEl = document.getElementById("food-image");
   }
   //builds the card after search for each product
   function buildCard(data) {
-    
     const energy = data.nutrients.ENERC_KCAL ? `<li><b>Calories: </b><span>${data.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>` : ''
     const carbs = data.nutrients.CHOCDF ? `<li><b>Carbohydrates: </b><span>${data.nutrients.CHOCDF.toFixed(1)}g</span></li>` : ''
     const protein = data.nutrients.PROCNT ? `<li><b>Proteins: </b><span>${data.nutrients.PROCNT.toFixed(1)}g</span></li>` : ''
@@ -80,9 +80,11 @@ var imgEl = document.getElementById("food-image");
     </div>
     <div class="card-footer">
       <p><b>Brand: </b><span>${data.brand || 'None :('}</span></p>
-      <div class="addBtn">
-      <button style="color:azure"> ADD </button>
-     
+      <div class="addBtn" >
+      <input id="heart" type="checkbox" />
+      <button id=${data.foodId}  onclick="storeData();"><label for="heart">❤</label>
+
+      </button>
       </div>
     </div>
   </div>
@@ -97,11 +99,11 @@ var imgEl = document.getElementById("food-image");
 
 var imageURL = "";
 
-function getImage(form){
+function getImage(form) {
   const formData = new FormData(form);
   let searchTerm = formData.get('name');
   var requestURL = "https://pixabay.com/api/?key=35844814-7d1b1acb06ab5ddd767b0ed30&q=" + searchTerm + "&image_type=photo&min_width=200&max_width=200&safesearch=true&category=food";
-  
+
   fetch(requestURL)
     .then(resp => resp.json())
     .then(resp => {//do something with json recieved from pixabay
@@ -112,3 +114,48 @@ function getImage(form){
       imgEl.setAttribute("src", "assets/placeholder.jpg");
     })
 }
+
+function storeData(event) {
+  var dataHTML = "<h1>Cart</h1>";
+  dataHTML += "<h2 id='DIARY'> nutrient info </h2>";
+  var element = document.getElementById("diary");
+  
+  event = event || window.event;
+  event = event.target || event.srcElement;
+  if (event.nodeName === 'BUTTON') {
+    var items = JSON.parse(localStorage.getItem("items"))
+    items.forEach(item => {
+      if(event.id === item.food.foodId) {
+        dataHTML += `
+        <div class="diary">
+        <div class="diary-header">
+          <h3>${item.food.label}</h3>
+          <h4>${item.food.category}</h4>
+        </div>
+        <div class="diary-body">
+         <ul>
+         <li><b>Calories: </b><span>${item.food.nutrients.ENERC_KCAL.toFixed(1)}kcal</span></li>
+         <li><b>Carbohydrates: </b><span>${item.food.nutrients.CHOCDF.toFixed(1)}g</span></li>
+         <li><b>Proteins: </b><span>${item.food.nutrients.PROCNT.toFixed(1)}g</span></li>
+         <li><b>Fats: </b><span>${item.food.nutrients.FAT.toFixed(1)}g</span></li>
+        </ul>
+        </div>`
+      }
+    })
+  }
+  element.innerHTML = dataHTML;
+}
+$(function() {
+  $('#bookmarkme').click(function() {
+    if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
+      window.sidebar.addPanel(document.title, window.location.href, '');
+    } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite
+      window.external.AddFavorite(location.href, document.title);
+    } else if (window.opera && window.print) { // Opera Hotlist
+      this.title = document.title;
+      return true;
+    } else { // webkit - safari/chrome
+      alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+    }
+  });
+});

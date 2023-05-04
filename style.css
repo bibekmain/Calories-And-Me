@@ -72,7 +72,7 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
+margin-bottom: 10px;
   visibility:hidden;
 }
 
@@ -95,9 +95,46 @@ img {
 {
   border-color: yellow;
 }
-.addBtn{
-background-color:grey;
-bottom: 5px;
-    right: 5px;
-    border-radius: 5px;
+/*.addBtn{
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+ 
+}*/
+
+heart {
+  position: absolute;
+  left: -100vw;
 }
+
+[for="heart"] {
+  color: #aab8c2;
+  cursor: pointer;
+  font-size: 6em;
+  align-self: center;  
+  transition: color 0.2s ease-in-out;
+}
+
+heart:hover {
+  color: grey;
+}
+
+[for="heart"]::selection {
+  color: none;
+  background: transparent;
+}
+
+[for="heart"]::moz-selection {
+  color: none;
+  background: transparent;
+}
+
+[id="heart"]:checked + label {
+  color: #e2264d;
+  will-change: font-size;
+  animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+}
+
+
+
+@keyframes heart {0%, 17.5% {font-size: 0;}}
