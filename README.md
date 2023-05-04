@@ -16,7 +16,8 @@ Calories & Me offers a variety of features to help users find the nutritional in
 - **Compare foods:** Users can save their favorite foods and compare nutritional information between different foods.
 
 ## Links
-
+Deployed Application: https://bibekmain.github.io/Project-1-G10/
+GitHub Page: https://github.com/bibekmain/Project-1-G10
 
 ## Authors & Acknowledgement
 Website presented to you by Adan J, Bibek M, Hakeem O, Priyanka V, Shiva T.
