@@ -36,7 +36,7 @@ body {
 
 /*header styling*/
 h1 {
-  /* font-weight: bolder;*/
+
   text-shadow: 0px 0px 5px #c9d393, 0px 0px 10px #c9d393, 0px 0px 10px #c9d393,
     0px 0px 20px #c3d393;
 
@@ -104,6 +104,17 @@ margin-bottom: 10px;
 }
 .addBtn .heart:focus{
   color: red;
+}
+.addBtn .heart:visited{
+  color: red;
+}
+.diary{
+  padding: 10px;
+  margin: 8px;
+  border-radius: 10px;
+  border-color: black;
+  color: azure;
+  background-color: rgba(98, 93, 96, 0.5);
 }
 
 #diary{
