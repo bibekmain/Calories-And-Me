@@ -1,5 +1,5 @@
 var imgEl = document.getElementById("food-image");
-
+//This section is used to initiate the macro counter for the webpage
 var totalCalories = localStorage.getItem("totalCalories");
 var totalCarbohydrates = localStorage.getItem("totalCarbohydrates");
 var totalProteins = localStorage.getItem("totalProteins");
@@ -12,7 +12,7 @@ if(!totalCalories && !totalCarbohydrates){//if the local storage values aren't i
   localStorage.setItem("totalProteins", 0);
   localStorage.setItem("totalFats", 0);
 }
-updateMacros();
+updateMacros();//calls the update method to update macro elements
 
 
 //This section is edamam API JS
@@ -39,6 +39,7 @@ updateMacros();
     fetch(`https://api.edamam.com/api/food-database/v2/parser?app_id=153bdd9c&app_key=bb99694209a64070ce49004caccc4859&ingr=ingr=${formData.get('name')}`)
       .then(resp => resp.json())
       .then(resp => {
+        totalCards=0;
         if (resp.hints.length) {
           localStorage.setItem("items",JSON.stringify(resp.hints))
           resp.hints.forEach(hint => {
@@ -46,7 +47,7 @@ updateMacros();
           })
         }
         else {
-          changeInput(form[0], 'placeholder', 'We didn\'t found any food.')
+          changeInput(form[0], 'placeholder', 'We didn\'t find any food.')
           resetInput(form[0])
         }
         changeTextButton(form[1], 'SEARCH')
@@ -203,10 +204,10 @@ function storeData(event) {
 allCards = document.getElementsByClassName("card");
 function cardClicked(cardNum){//change local storage based on card clicked
   //allCards[cardNum].getAttribute("data-calorie")
-  newCal = parseFloat(localStorage.getItem("totalCalories")) + parseFloat(allCards[cardNum].getAttribute("data-calorie"));
-  newCarb = parseFloat(localStorage.getItem("totalCarbohydrates")) + parseFloat(allCards[cardNum].getAttribute("data-carb"));
-  newProt = parseFloat(localStorage.getItem("totalProteins")) + parseFloat(allCards[cardNum].getAttribute("data-protein"));
-  newFat = parseFloat(localStorage.getItem("totalFats")) + parseFloat(allCards[cardNum].getAttribute("data-fat"));
+  newCal = (parseFloat(localStorage.getItem("totalCalories")) + parseFloat(allCards[cardNum].getAttribute("data-calorie"))).toFixed(1);
+  newCarb = (parseFloat(localStorage.getItem("totalCarbohydrates")) + parseFloat(allCards[cardNum].getAttribute("data-carb"))).toFixed(1);
+  newProt = (parseFloat(localStorage.getItem("totalProteins")) + parseFloat(allCards[cardNum].getAttribute("data-protein"))).toFixed(1);
+  newFat = (parseFloat(localStorage.getItem("totalFats")) + parseFloat(allCards[cardNum].getAttribute("data-fat"))).toFixed(1);
 
   localStorage.setItem("totalCalories", newCal);
   localStorage.setItem("totalCarbohydrates", newCarb);
