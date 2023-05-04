@@ -19,6 +19,7 @@ body {
 
 /*search button styling-foundation framework*/
 .input {
+  
   block-size: 30px;
   inline-size: 500px;
 }
@@ -51,6 +52,7 @@ h2 {
 h2 {
   text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
     0px 0px 20px #b393d3;
+    padding-bottom: 15px;
 }
 
 header,
@@ -84,6 +86,7 @@ margin-bottom: 10px;
   border-color: black;
   color: azure;
   background-color: rgba(98, 93, 96, 0.5);
+ 
 
 }
 .card:hover{
@@ -125,13 +128,17 @@ margin-bottom: 10px;
   border: 2px solid;
   border-radius: 15px;
   padding: 5px;
+ 
 }
 .log-container{
   margin-left: 15px;
-  border: 2px dotted;
+  border: 2px transparent;
   border-radius: 20px;
   padding: 3px;
+  background-color: rgba(98, 93, 96, 0.5);
+ 
 }
+
 #reset-button{
   color: white;
   border: 3px solid;
