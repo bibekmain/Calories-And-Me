@@ -88,53 +88,22 @@ margin-bottom: 10px;
 
 }
 .card:hover{
- /*transform: scale(1.05);*/
+
   border-color: #93d3af;
 }
 .card:active
 {
   border-color: yellow;
 }
-/*.addBtn{
-  display: inline-block;
-  padding: 5px;
+.addBtn .heart{
+  position:relative;
+  font-size: 3rem;
   cursor: pointer;
- 
-}*/
-
-heart {
-  position: absolute;
-  left: -100vw;
 }
-
-[for="heart"] {
-  color: #aab8c2;
-  cursor: pointer;
-  font-size: 6em;
-  align-self: center;  
-  transition: color 0.2s ease-in-out;
-}
-
-heart:hover {
+.addBtn .heart:hover {
   color: grey;
 }
-
-[for="heart"]::selection {
-  color: none;
-  background: transparent;
+.addBtn .heart:focus{
+  color: red;
 }
 
-[for="heart"]::moz-selection {
-  color: none;
-  background: transparent;
-}
-
-[id="heart"]:checked + label {
-  color: #e2264d;
-  will-change: font-size;
-  animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
-}
-
-
-
-@keyframes heart {0%, 17.5% {font-size: 0;}}
