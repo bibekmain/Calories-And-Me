@@ -81,9 +81,9 @@ var imgEl = document.getElementById("food-image");
     <div class="card-footer">
       <p><b>Brand: </b><span>${data.brand || 'None :('}</span></p>
       <div class="addBtn" >
-      <input id="heart" type="checkbox" />
-      <button id=${data.foodId}  onclick="storeData();"><label for="heart">❤</label>
-
+      
+      <button id=${data.foodId} class="heart" type="checkbox" onclick="storeData().ba;"> &#9829
+     
       </button>
       </div>
     </div>
