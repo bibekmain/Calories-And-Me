@@ -72,7 +72,7 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
+margin-bottom: 10px;
   visibility:hidden;
 }
 
@@ -88,16 +88,22 @@ img {
 
 }
 .card:hover{
- /*transform: scale(1.05);*/
+
   border-color: #93d3af;
 }
 .card:active
 {
   border-color: yellow;
 }
-.addBtn{
-background-color:grey;
-bottom: 5px;
-    right: 5px;
-    border-radius: 5px;
+.addBtn .heart{
+  position:relative;
+  font-size: 3rem;
+  cursor: pointer;
 }
+.addBtn .heart:hover {
+  color: grey;
+}
+.addBtn .heart:focus{
+  color: red;
+}
+
