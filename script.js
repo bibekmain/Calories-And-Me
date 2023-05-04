@@ -157,7 +157,7 @@ function storeData(event) {
           `
         <div class="diary">
 
-          <h1>Saved</h1>
+          <h1>Food Items</h1>
 
           <div class="diary-header">
             <h3>${item.food.label}</h3>
@@ -235,7 +235,7 @@ function resetMacros() {
   localStorage.setItem("totalFats", 0);
   updateMacros();
 };
-//remove card button when pressed subtract that one item from the total Daily log 
+//remove card button when pressed subtracts that specific card item from the total Daily log 
 function removeCard(event) {
   event = event || window.event;
   event = event.target || event.srcElement;
@@ -252,6 +252,8 @@ function removeCard(event) {
         localStorage.setItem("totalCarbohydrates", newCarb);
         localStorage.setItem("totalProteins", newProt);
         localStorage.setItem("totalFats", newFat);
+
+    
       }
     })
   }
