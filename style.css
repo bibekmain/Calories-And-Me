@@ -97,6 +97,7 @@ margin-bottom: 10px;
 {
   border-color: yellow;
 }
+/*heart add button*/
 .addBtn .heart{
   position:relative;
   font-size: 3rem;
@@ -107,10 +108,12 @@ margin-bottom: 10px;
 }
 .addBtn .heart:focus{
   color: red;
+  
 }
-.addBtn .heart:visited{
+.addBtn .heart::selection{
   color: red;
 }
+/*diary display card styling */
 .diary{
   padding: 10px;
   margin: 8px;
@@ -138,7 +141,7 @@ margin-bottom: 10px;
   background-color: rgba(98, 93, 96, 0.5);
  
 }
-
+/*reset button styling */
 #reset-button{
   color: white;
   border: 3px solid;
@@ -146,6 +149,18 @@ margin-bottom: 10px;
   width: 30%;
 }
 #reset-button:hover{
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+/*remove button styling*/
+.remove{
+  color: white;
+  border: 3px solid;
+  border-radius: 40px;
+  width: 40%;
+}
+.remove:hover{
   color: black;
   background-color: white;
   cursor: pointer;

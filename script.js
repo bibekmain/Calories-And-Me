@@ -6,7 +6,7 @@ var totalProteins = localStorage.getItem("totalProteins");
 var totalFats = localStorage.getItem("totalFats");
 
 
-if(!totalCalories && !totalCarbohydrates){//if the local storage values aren't initialized then initilize them to 0
+if (!totalCalories && !totalCarbohydrates) {//if the local storage values aren't initialized then initilize them to 0
   localStorage.setItem("totalCalories", 0);
   localStorage.setItem("totalCarbohydrates", 0);
   localStorage.setItem("totalProteins", 0);
@@ -39,9 +39,9 @@ updateMacros();//calls the update method to update macro elements
     fetch(`https://api.edamam.com/api/food-database/v2/parser?app_id=153bdd9c&app_key=bb99694209a64070ce49004caccc4859&ingr=ingr=${formData.get('name')}`)
       .then(resp => resp.json())
       .then(resp => {
-        totalCards=0;
+        totalCards = 0;
         if (resp.hints.length) {
-          localStorage.setItem("items",JSON.stringify(resp.hints))
+          localStorage.setItem("items", JSON.stringify(resp.hints))
           resp.hints.forEach(hint => {
             insertCard(hint.food)
           })
@@ -82,8 +82,8 @@ updateMacros();//calls the update method to update macro elements
     const protein = data.nutrients.PROCNT ? `<li><b>Proteins: </b><span>${data.nutrients.PROCNT.toFixed(1)}g</span></li>` : ''
     const fat = data.nutrients.FAT ? `<li><b>Fats: </b><span>${data.nutrients.FAT.toFixed(1)}g</span></li>` : ''
     const sugars = data.nutrients.SUGAR ? `<li><b>Sugars: </b><span>${data.nutrients.SUGAR.toFixed(1)}g</span></li>` : ''
-    const html = 
-    `
+    const html =
+      `
       <div class="card"
       data-calorie="${parseFloat(data.nutrients.ENERC_KCAL.toFixed(1))}" 
       data-carb="${parseFloat(data.nutrients.CHOCDF.toFixed(1))}"
@@ -108,8 +108,9 @@ updateMacros();//calls the update method to update macro elements
         <div class="card-footer">
           <p><b>Brand: </b><span>${data.brand || 'None :('}</span></p>
           <div class="addBtn" >
-          <button id=${data.foodId} class="heart" type="checkbox" onclick="cardClicked(${cardNum}); storeData();"> &#9829</button>
+          <button id=${data.foodId} class="heart"  onclick="cardClicked(${cardNum}); storeData();"> &#9829</button>
           </div>
+
 
         </div>
 
@@ -151,9 +152,9 @@ function storeData(event) {
   if (event.nodeName === 'BUTTON') {
     var items = JSON.parse(localStorage.getItem("items"))
     items.forEach(item => {
-      if(event.id === item.food.foodId) {
-        dataHTML += 
-        `
+      if (event.id === item.food.foodId) {
+        dataHTML +=
+          `
         <div class="diary">
 
           <h1>Saved</h1>
@@ -170,10 +171,10 @@ function storeData(event) {
               <li><b>Proteins: </b><span>${item.food.nutrients.PROCNT.toFixed(1)}g</span></li>
               <li><b>Fats: </b><span>${item.food.nutrients.FAT.toFixed(1)}g</span></li>
             </ul>
+        
+          <button id=${item.food.foodId} class="remove" onclick="removeCard();">Remove</button>
           </div>
-
         </div>
-
         <div class="log-container">
 
           <h1>Daily Log</h1>
@@ -202,7 +203,7 @@ function storeData(event) {
 //section below is for total macros
 
 allCards = document.getElementsByClassName("card");
-function cardClicked(cardNum){//change local storage based on card clicked
+function cardClicked(cardNum) {//change local storage based on card clicked
   //allCards[cardNum].getAttribute("data-calorie")
   newCal = (parseFloat(localStorage.getItem("totalCalories")) + parseFloat(allCards[cardNum].getAttribute("data-calorie"))).toFixed(1);
   newCarb = (parseFloat(localStorage.getItem("totalCarbohydrates")) + parseFloat(allCards[cardNum].getAttribute("data-carb"))).toFixed(1);
@@ -215,7 +216,7 @@ function cardClicked(cardNum){//change local storage based on card clicked
   localStorage.setItem("totalFats", newFat);
 }
 
-function updateMacros(){
+function updateMacros() {
   let calorieEl = document.getElementById("totalCalories");
   let carbEl = document.getElementById("totalCarbohydrates");
   let proteinEl = document.getElementById("totalProteins");
@@ -227,17 +228,39 @@ function updateMacros(){
   fatEl.innerHTML = localStorage.getItem("totalFats");
 }
 
-function resetMacros(){
+function resetMacros() {
   localStorage.setItem("totalCalories", 0);
   localStorage.setItem("totalCarbohydrates", 0);
   localStorage.setItem("totalProteins", 0);
   localStorage.setItem("totalFats", 0);
   updateMacros();
-}
+};
+//remove card button when pressed subtract that one item from the total Daily log 
+function removeCard(event) {
+  event = event || window.event;
+  event = event.target || event.srcElement;
+  if (event.nodeName === 'BUTTON') {
+    var items = JSON.parse(localStorage.getItem("items"))
+    items.forEach(item => {
+      if (event.id === item.food.foodId) {
+        newCal = (parseFloat(localStorage.getItem("totalCalories")) - parseFloat(item.food.nutrients.ENERC_KCAL.toFixed(1))).toFixed(1);
+        newCarb = (parseFloat(localStorage.getItem("totalCarbohydrates")) - parseFloat(item.food.nutrients.CHOCDF.toFixed(1))).toFixed(1);
+        newProt = (parseFloat(localStorage.getItem("totalProteins")) - parseFloat(item.food.nutrients.PROCNT.toFixed(1))).toFixed(1);
+        newFat = (parseFloat(localStorage.getItem("totalFats")) - parseFloat(item.food.nutrients.FAT.toFixed(1))).toFixed(1);
+
+        localStorage.setItem("totalCalories", newCal);
+        localStorage.setItem("totalCarbohydrates", newCarb);
+        localStorage.setItem("totalProteins", newProt);
+        localStorage.setItem("totalFats", newFat);
+      }
+    })
+  }
+  updateMacros()
+};
 
 //Section below is for bookmark
-$(function() {
-  $('#bookmarkme').click(function() {
+$(function () {
+  $('#bookmarkme').click(function () {
     if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
       window.sidebar.addPanel(document.title, window.location.href, '');
     } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite
