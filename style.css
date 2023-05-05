@@ -119,7 +119,6 @@ margin-bottom: 10px;
   color: azure;
   background-color: rgba(98, 93, 96, 0.5);
 }
-
 #diary{
   display: flex;
   flex-direction: row;
@@ -136,15 +135,29 @@ margin-bottom: 10px;
   border-radius: 20px;
   padding: 3px;
   background-color: rgba(98, 93, 96, 0.5);
- 
+  padding: 15px;
 }
+
+/*reset button*/
 #reset-button{
   color: white;
   border: 3px solid;
   border-radius: 20px;
-  width: 30%;
+  width: 40%;
 }
 #reset-button:hover{
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+/*remove button styling*/
+.remove{
+  color: white;
+  border: 3px solid;
+  border-radius: 40px;
+  width: 40%;
+}
+.remove:hover{
   color: black;
   background-color: white;
   cursor: pointer;
