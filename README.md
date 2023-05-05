@@ -7,7 +7,7 @@ To use Calories & Me, simply visit the website and start searching for foods by 
 
 ## Demo
 
-![Demo GIF for Calories & Me](https://github.com/bibekmain/Project-1-G10/blob/main/assets/Calories%20%26%20Me.gif)
+![Demo GIF for Calories & Me](https://github.com/bibekmain/Project-1-G10/blob/main/assets/Calories%20%26%20Me.gif) 
 
 ## Features
 Calories & Me offers a variety of features to help users find the nutritional information they need:
