@@ -156,7 +156,7 @@ function storeData(event) {
         `
         <div class="diary">
 
-          <h1>Saved</h1>
+          <h1>Food items</h1>
 
           <div class="diary-header">
             <h3>${item.food.label}</h3>
@@ -170,6 +170,8 @@ function storeData(event) {
               <li><b>Proteins: </b><span>${item.food.nutrients.PROCNT.toFixed(1)}g</span></li>
               <li><b>Fats: </b><span>${item.food.nutrients.FAT.toFixed(1)}g</span></li>
             </ul>
+
+            <button id=${item.food.foodId} class="remove" onclick="removeCard();">Remove</button>
           </div>
 
         </div>
@@ -233,6 +235,76 @@ function resetMacros(){
   localStorage.setItem("totalProteins", 0);
   localStorage.setItem("totalFats", 0);
   updateMacros();
+}
+
+//remove card button when pressed subtracts that specific card item from the total Daily log
+function removeCard(event) {
+  event = event || window.event;
+  event = event.target || event.srcElement;
+  if (event.nodeName === 'BUTTON') {
+    var items = JSON.parse(localStorage.getItem("items"))
+    items.forEach(item => {
+      if (event.id === item.food.foodId) {
+        newCal = (parseFloat(localStorage.getItem("totalCalories")) - parseFloat(item.food.nutrients.ENERC_KCAL.toFixed(1))).toFixed(1);
+        newCarb = (parseFloat(localStorage.getItem("totalCarbohydrates")) - parseFloat(item.food.nutrients.CHOCDF.toFixed(1))).toFixed(1);
+        newProt = (parseFloat(localStorage.getItem("totalProteins")) - parseFloat(item.food.nutrients.PROCNT.toFixed(1))).toFixed(1);
+        newFat = (parseFloat(localStorage.getItem("totalFats")) - parseFloat(item.food.nutrients.FAT.toFixed(1))).toFixed(1);
+        localStorage.setItem("totalCalories", newCal);
+        localStorage.setItem("totalCarbohydrates", newCarb);
+        localStorage.setItem("totalProteins", newProt);
+        localStorage.setItem("totalFats", newFat);
+      }
+    })
+  }
+  updateMacros();
+  resetItem();
+};
+
+function resetItem(){
+  var element = document.getElementById("diary");
+  dataHTML = 
+  `
+  <div class="diary">
+
+          <h1>Food items</h1>
+
+          <div class="diary-header">
+            <h3>Food Lable</h3>
+            <h4>Food Category</h4>
+          </div>
+
+          <div class="diary-body">
+            <ul>
+              <li><b>Calories: </b><span>--</span></li>
+              <li><b>Carbohydrates: </b><span>--</span></li>
+              <li><b>Proteins: </b><span>--</span></li>
+              <li><b>Fats: </b><span>--</span></li>
+            </ul>
+
+            <button id="na" class="remove" onclick="removeCard();">Remove</button>
+          </div>
+
+        </div>
+
+        <div class="log-container">
+
+          <h1>Daily Log</h1>
+              
+          <div id="totals-header"> <strong>My Daily Log: </strong> </div>
+          <div id="totals">
+
+            <h6>Calories: <span id="totalCalories">${localStorage.getItem("totalCalories")}</span></h6>
+            <h6>Carbohydrates: <span id="totalCarbohydrates">${localStorage.getItem("totalCarbohydrates")}</span></h6>
+            <h6>Proteins: <span id="totalProteins">${localStorage.getItem("totalProteins")}</span></h6>
+            <h6>Fats: <span id="totalFats">${localStorage.getItem("totalFats")}</span></h6>
+
+            <button id="reset-button" onclick="resetMacros();">Reset</button>
+
+          </div>
+
+        </div> 
+  `
+  element.innerHTML=dataHTML;
 }
 
 //Section below is for bookmark
